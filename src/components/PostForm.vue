@@ -1,27 +1,32 @@
 <template>
   <form @submit.prevent>
     <label for="name">Add name</label>
-    <input
+    <my-input
         v-model="post.title"
         type="text"
         id="name"
-        placeholder="name">
+        placeholder="name"/>
     <label for="description">Add Description</label>
-    <input
+    <my-input
         v-model="post.body"
         type="text"
         id="description"
-        placeholder="description">
-    <button class="btn"
-            @click="createPost"
-    >Create
-    </button>
+        placeholder="description"/>
+    <my-button
+        class="btn"
+        @click="createPost">Create
+    </my-button>
   </form>
 
 </template>
 
 <script>
+
+import MyInput from "@/components/UI/MyInput.vue";
+import MyButton from "@/components/UI/MyButton.vue";
+
 export default {
+  components: {MyButton, MyInput},
   data() {
     return {
       post: {
@@ -51,12 +56,7 @@ export default {
 }
 
 
-input {
-  width: 100%;
-  border: 1px solid teal;
-  padding: 10px 15px;
-  margin-bottom: 20px;
-}
+
 
 .app {
   padding: 20%;
@@ -67,19 +67,6 @@ form {
   flex-direction: column;
 }
 
-.btn {
-  margin-top: 15px;
-  align-self: flex-end;
-  padding: 10px 15px;
-  background: none;
-  color: teal;
-  border: 1px solid teal;
-}
-
-.btn:hover {
-  background: teal;
-  color: white;
-}
 
 label {
   font-size: 15px;

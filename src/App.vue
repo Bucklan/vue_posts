@@ -10,9 +10,10 @@
 <script>
 import PostForm from "@/components/PostForm.vue";
 import PostList from "@/components/PostList.vue";
+
 export default {
   components: {
-    PostList,PostForm
+    PostList, PostForm
   },
   data() {
     return {
@@ -27,6 +28,9 @@ export default {
     createPost(post) {
       this.posts.push(post)
     },
+    removePost(post) {
+      this.posts = this.posts.filter(p => p.id !== post.id)
+    }
   }
 }
 
